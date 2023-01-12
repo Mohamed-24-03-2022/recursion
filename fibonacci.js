@@ -1,27 +1,20 @@
 // iterator solution
 const iteratorFibs = (num) => {
-  let result = 0;
   let arr = [0, 1];
-
-  for (let i = 0; i < num; i++) {
-    result += arr[arr.length - 2];
-    arr.push(result);
+  for (let i = 0; i < num - 2; i++) {
+    arr[i + 2] = arr[arr.length - 2] + arr[arr.length - 1];
   }
-
-  return arr.slice(2);
+  return arr;
 };
 console.log(iteratorFibs(8));
 
 
-// recursive solution:
-let result = 0;
+// recursive solution:;
 const init = [0, 1];
 const fibs = (num) => {
-  if (init.length - 2 === num) return;
-  result += init[init.length - 2];
-  init.push(result);
+  if (init.length === num) return;
+  init[init.length] = init[init.length - 1] + init[init.length - 2];
   fibs(num);
-  return init.slice(2);
+  return init;
 };
 console.log(fibs(8));
-
